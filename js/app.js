@@ -4181,8 +4181,8 @@
     const da = new DynamicAdapt("max");
     da.init();
     const stepsContainer = document.querySelector(".steps__items");
-    const originalItems = Array.from(stepsContainer.children);
     function sortSteps(e) {
+        const originalItems = Array.from(stepsContainer.children);
         if (e.matches) {
             const items = Array.from(stepsContainer.children);
             items.sort(((a, b) => {
@@ -4194,8 +4194,10 @@
         } else originalItems.forEach((item => stepsContainer.appendChild(item)));
     }
     const mediaQuery = window.matchMedia("(max-width: 768px)");
-    sortSteps(mediaQuery);
-    if (stepsContainer) mediaQuery.addEventListener("change", sortSteps);
+    if (stepsContainer) {
+        sortSteps(mediaQuery);
+        mediaQuery.addEventListener("change", sortSteps);
+    }
     window["FLS"] = true;
     menuInit();
     spollers();
