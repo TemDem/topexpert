@@ -4198,6 +4198,138 @@
         sortSteps(mediaQuery);
         mediaQuery.addEventListener("change", sortSteps);
     }
+    document.addEventListener("DOMContentLoaded", (() => {
+        const animationMap = [ {
+            selector: "h1, h2, h3",
+            className: "fade-up"
+        }, {
+            selector: ".subtitle",
+            className: "fade-right"
+        }, {
+            selector: ".main-section__image img",
+            className: "zoom-in"
+        }, {
+            selector: ".main-section__btn",
+            className: "zoom-in"
+        }, {
+            selector: ".services__slide",
+            className: "fade-scale"
+        }, {
+            selector: ".prices__item",
+            className: "stagger-fade"
+        }, {
+            selector: ".objects__item",
+            className: "fade-up"
+        }, {
+            selector: ".advantages__item",
+            className: "fade-scale"
+        }, {
+            selector: ".team__slide",
+            className: "zoom-in"
+        }, {
+            selector: ".team__advantages",
+            className: "stagger-fade"
+        }, {
+            selector: ".projects__slide",
+            className: "fade-up"
+        }, {
+            selector: ".documents__text",
+            className: "fade-left"
+        }, {
+            selector: ".consult__form",
+            className: "fade-up"
+        }, {
+            selector: ".find__title",
+            className: "fade-up"
+        }, {
+            selector: ".find__btn",
+            className: "zoom-in"
+        } ];
+        animationMap.forEach((({selector, className}) => {
+            document.querySelectorAll(selector).forEach((el => {
+                el.classList.add(className);
+            }));
+        }));
+    }));
+    document.addEventListener("DOMContentLoaded", (() => {
+        const anims = [ {
+            selector: ".fade-up",
+            props: {
+                y: 0,
+                opacity: 1
+            }
+        }, {
+            selector: ".fade-right",
+            props: {
+                x: 0,
+                opacity: 1
+            }
+        }, {
+            selector: ".fade-left",
+            props: {
+                x: 0,
+                opacity: 1
+            }
+        }, {
+            selector: ".fade-scale",
+            props: {
+                scale: 1,
+                opacity: 1
+            }
+        }, {
+            selector: ".fade-rotate",
+            props: {
+                rotation: 0,
+                scale: 1,
+                opacity: 1
+            }
+        }, {
+            selector: ".slide-up",
+            props: {
+                y: 0,
+                opacity: 1
+            }
+        }, {
+            selector: ".slide-down",
+            props: {
+                y: 0,
+                opacity: 1
+            }
+        }, {
+            selector: ".zoom-in",
+            props: {
+                scale: 1,
+                opacity: 1
+            }
+        }, {
+            selector: ".zoom-out",
+            props: {
+                scale: 1,
+                opacity: 1
+            }
+        }, {
+            selector: ".stagger-fade",
+            props: {
+                y: 0,
+                opacity: 1,
+                stagger: .1
+            }
+        } ];
+        anims.forEach((({selector, props}) => {
+            gsap.utils.toArray(selector).forEach((el => {
+                gsap.fromTo(el, {}, {
+                    ...props,
+                    duration: .6,
+                    ease: "power2.out",
+                    scrollTrigger: {
+                        trigger: el,
+                        start: "top bottom-=100",
+                        toggleActions: "play none none none"
+                    }
+                });
+            }));
+        }));
+    }));
     window["FLS"] = true;
     menuInit();
     spollers();
