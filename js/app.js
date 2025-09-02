@@ -4250,8 +4250,6 @@
                 el.classList.add(className);
             }));
         }));
-    }));
-    document.addEventListener("DOMContentLoaded", (() => {
         const anims = [ {
             selector: ".fade-up",
             props: {
